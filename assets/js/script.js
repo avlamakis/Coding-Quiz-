@@ -65,8 +65,9 @@ var questions = [
 
 ];
 
-//initial variable for score 
+// initial variable for score 
 var score = 0
+var questionCollection = 0
 
 // timer function variables
 var challengeTimer = document.querySelector("#challengeTimer")
@@ -77,11 +78,24 @@ var questionsDiv = document.querySelector("#questionsDiv");
 // Time Left Variables
 var remainingTime = 61;
 // holds the time 
-var containTime = 0;
+var containTime = -1;
 // sets the penalty
 var penalty = 5;
 
+// function to create timer and display on click 
+timer.addEventListener("click", function () {
+    if (containTime === -1) {
+        containTime = setInterval(function () {
+            remainingTime--;
+            challengeTimer.textContent = "Time:" + remainingTime;
 
+            if (remainingTime <= -1) {
+                clearInterval(containTime);
+                challengeTimer.textContent = "Time's Up";
+            }
 
+        }, 1000);
+    }
+});
 
 
