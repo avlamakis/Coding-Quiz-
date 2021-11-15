@@ -6,12 +6,12 @@ var questions = [
         selections: [
             "A. If (x < 0) a = b * 2; y = x; z = a – y;",
 
-            "B. if (x < 0) a = b * 2; y = x; z = a – y;",
+            "B. if (x < 0){ a = b * 2; y = x; z = a – y;}",
 
-            "C. If{ (x < 0) a = b * 2; y = x; z = a – y ;",
+            "C. If (x < 0) a = b * 2; y = x; z = a – y ;",
 
-            "D. If (x < 0) { a = b * 2; y = x; z = a – y;"],
-        answer: ["A. If (x < 0) a = b * 2; y = x; z = a – y;"]
+            "D. If (x < 0)  a = b * 2; y = x; z = a – y;"],
+        answer: "B. if (x < 0){ a = b * 2; y = x; z = a – y;};"
 
     },
     {
@@ -24,7 +24,7 @@ var questions = [
             "C. Debugging",
 
             "D. Scanning"],
-        answer: ["C. Debugging"]
+        answer: "C. Debugging"
     },
 
     {
@@ -37,11 +37,31 @@ var questions = [
             "C. Esc",
 
             "D. Ctrl - C"],
-        answer: []
+        answer: "D. Ctrl - C"
     },
 
     {
+        title: "A loop that never ends is referred to as a(n)_________.",
+        selections: [
+            "A. While loop",
 
+            "B. Infinite loop",
+
+            "C. Recursive loop",
+
+            "D. ) for loop"],
+        answer: "B. Infinite loop"
+    },
+
+    {
+        title: "String values must be enclosed within ____ when being assigned to variables.",
+        selections: [
+            "A. commas",
+            "B. curly brackets",
+            "C. quotes",
+            "D. parenthesis"],
+        answer: "C. quotes"
     }
 
-]
+];
+
