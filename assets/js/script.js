@@ -65,3 +65,23 @@ var questions = [
 
 ];
 
+//initial variable for score 
+var score = 0
+
+// timer function variables
+var challengeTimer = document.querySelector("#challengeTimer")
+var wrapper = document.querySelector("#wrapper");
+var timer = document.querySelector("#startChallenge");
+var questionsDiv = document.querySelector("#questionsDiv");
+
+// Time Left Variables
+var remainingTime = 61;
+// holds the time 
+var containTime = 0;
+// sets the penalty
+var penalty = 5;
+
+
+
+
+

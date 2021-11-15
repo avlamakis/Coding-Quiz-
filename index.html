@@ -14,24 +14,27 @@
     <!-- Link to secondary HTML file for high scores-->
     <a href="Highscores.html">View High Scores</a>
     <!--utilzing this class to wrap the content -->
-    <div class="wrapper">
+    <div id="wrapper">
         <!-- inital header -->
         <header>
             <h1>Coding Quiz Challenge</h1>
         </header>
         <!-- div class set for the challenge funciton -->
-        <div class="challenge">
+        <div id="challenge">
+            <!-- Div set for challenge timer-->
+            <div id="challengeTimer"></div>
             <!-- Div for the questions and prompt -->
-            <div class="questions">
+            <div id="questionsDiv">
                 <h2> Challenge </h2>
                 <p>
                     You will need to complete the Challenge within the allowed time. Reminder: any questions answered
-                    incorrectly will deduct 5 seconds off your challenge.
+                    incorrectly will deduct 5 seconds off your challenge time and final score.
+
                 </p>
-                <ul class="selectionsUl"></ul>
+                <ul id="selectionsUl"></ul>
             </div>
             <!-- button to start the challenge/challenge -->
-            <button id="startchallenge" class="btn">Start Challenge</button>
+            <button id="startChallenge" class="btn">Start Challenge</button>
         </div>
     </div>
     <!-- linkage for the JS file -->
