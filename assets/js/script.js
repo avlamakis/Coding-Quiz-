@@ -61,7 +61,7 @@ var questions = [
             "C. quotes",
             "D. parenthesis"],
         answer: "C. quotes"
-    }
+    },
 
 ];
 
@@ -79,10 +79,10 @@ var wrapper = document.querySelector("#wrapper");
 var remainingTime = 61;
 // holds the time 
 var containTime = -1;
-// creation of new Unorded list element for questions array
-var ulCreate = document.createElement("ul");
 // sets the penalty
 var penalty = 5;
+// creation of new Unorded list element for questions array
+var ulCreate = document.createElement("ul");
 
 // function to create timer and display on click 
 timer.addEventListener("click", function () {
@@ -101,8 +101,6 @@ timer.addEventListener("click", function () {
     }
     display(questionCollection);
 });
-
-var validation = function (){};
 
 // displays questions after click event
 function display(questionCollection) {
@@ -123,13 +121,13 @@ function display(questionCollection) {
         ulCreate.appendChild(listItem);
         listItem.addEventListener("click", (validation));
     })
-};
+}
 
 // function event to compare the selected answer to the selections available
 function validation(event) {
     var confirmation = event.target;
 
-    if (element.correct("li")) {
+    if (confirmation.matches("li")) {
 
         var formInput = document.createElement("div");
         formInput.setAttribute("id", "formInput");
@@ -157,6 +155,77 @@ function validation(event) {
     questionsDiv.appendChild(formInput);
 
 };
+
+// Complete function 
+function complete() {
+    questionsDiv.innerHTML = "";
+    remainingTime.innerHTML = "";
+
+    // End of Challenge Confirmation 
+    var headerCreation = document.createElement("h1");
+    headerCreation.setAttribute("id", "headerCreation");
+    headerCreation.textContent = "All Done!"
+
+    questionsDiv.appendChild(headerCreation);
+
+    // time remaining calculation 
+    if (remainingTime >= 0) {
+        var timeLeft = remainingTime;
+        var createP2 = document.createElement("p");
+        clearInterval(containTime);
+        timeLeft.textContent = "Your final score is: " + timeLeft;
+
+        questionsDiv.appendChild(createP2);
+    }
+
+    // label creation for initial submission
+    var createLabel = document.createElement("label");
+    createLabel.setAttribute("id", "createLabel");
+    createLabel.textContent = "Enter your initials: ";
+
+    questionsDiv.appendChild(createLabel);
+
+    // input retrieval 
+    var createInput = document.createElement("input");
+    createInput.setAttribute("type", "text");
+    createInput.setAttribute("id", "initials");
+    createInput.textContent = "";
+
+    questionsDiv.appendChild(createInput);
+
+    // submit button for end of challenge
+    var createSubmit = document.createElement("button");
+    createSubmit.setAttribute("type", "submit");
+    createSubmit.setAttribute("id", "Submit");
+    createSubmit.textContent = "Submit";
+
+    questionsDiv.appendChild(createSubmit);
+
+    // Event listener to capture initials and final score submission to be sent to the local storage 
+    createSubmit.addEventListener("click", function () {
+        var initials = createInput.value;
+
+        if (initials === null) {
+
+        } else {
+            var finalScore = {
+                initials: initials,
+                score: timeLeft
+            }
+            var allScores = localStorage.getItem("allScores");
+            if (allScores === null) {
+                allScores = [];
+            } else {
+                allScores = JSON.parse(allScores);
+            }
+            allScores.push(finalScore);
+            var newScore = JSON.stringify(allScores);
+            localStorage.setItem("allScores", newScore);
+
+        }
+    });
+
+}
 
 
 
