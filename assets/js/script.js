@@ -93,6 +93,7 @@ timer.addEventListener("click", function () {
 
             if (remainingTime <= -1) {
                 clearInterval(containTime);
+                complete();
                 challengeTimer.textContent = "Time's Up";
             }
 
@@ -101,15 +102,17 @@ timer.addEventListener("click", function () {
     display(questionCollection);
 });
 
+var validation = function (){};
+
 // displays questions after click event
 function display(questionCollection) {
     questionsDiv.innerHTML = "";
     ulCreate.innerHTML = "";
     // initial for loop to go through array of questions
     for (var i = 0; i < questions.length; i++) {
-        var inputtedQuestion = questions[questionCollection].title;
+        var inputtedQuestions = questions[questionCollection].title;
         var inputtedSelections = questions[questionCollection].selections;
-        questionsDiv.textContent = inputtedQuestion;
+        questionsDiv.textContent = inputtedQuestions;
     }
     // New for loop using forEach to create the questions/answers
     // utilized github and w3 sources to uncover .forEach to use to loop through the array of questions
@@ -120,6 +123,42 @@ function display(questionCollection) {
         ulCreate.appendChild(listItem);
         listItem.addEventListener("click", (validation));
     })
-}
+};
+
+// function event to compare the selected answer to the selections available
+function validation(event) {
+    var confirmation = event.target;
+
+    if (element.correct("li")) {
+
+        var formInput = document.createElement("div");
+        formInput.setAttribute("id", "formInput");
+        // Correct condition 
+        if (confirmation.textContent == questions[questionCollection].answer) {
+            score++;
+            formInput.textContent = "Correct. The answer is:  " + questions[questionCollection].answer; 
+        } else {
+            // else statement to apply penalty of the 5 seconds to the timer
+            remainingTime = remainingTime - penalty;
+            formInput.textContent = "Wrong. The answer is: " + questions[questionCollection].answer;
+        }
+
+    }
+    // question collection function declared here with ++ to determine the question the user is on
+    questionCollection++;
+
+    if (questionCollection >= questions.length) {
+        // complete will provide the user with their final score
+        complete();
+        formInput.textContent = "The End!" + " " + "You got a score of  " + score + "/" + questions.length + " Correct!";
+    } else {
+        display(questionCollection);
+    }
+    questionsDiv.appendChild(formInput);
+
+};
+
+
+
 
 
