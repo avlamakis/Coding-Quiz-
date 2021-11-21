@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Coding Quiz</title>
+    <!-- link for the css file -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+    <!-- Link to secondary HTML file for high scores-->
+    <a href="Highscores.html">View High Scores</a>
+    <!--utilzing this class to wrap the content -->
+    <div id="wrapper">
+        <!-- inital header -->
+        <header>
+            <h1>Coding Quiz Challenge</h1>
+        </header>
+        <!-- div class set for the challenge funciton -->
+        <div id="challenge">
+            <!-- Div set for challenge timer-->
+            <div id="challengeTimer"></div>
+            <!-- Div for the questions and prompt -->
+            <div id="questionsDiv">
+                <h2> Challenge </h2>
+                <p>
+                    You will need to complete the Challenge within the allowed time. Reminder: any questions answered
+                    incorrectly will deduct 5 seconds off your challenge time.
+
+                </p>
+                <ul id="selectionsUl"></ul>
+            </div>
+            <!-- button to start the challenge/challenge -->
+            <button id="startChallenge" class="btn">Start Challenge</button>
+        </div>
+    </div>
+    <!-- linkage for the JS file -->
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
